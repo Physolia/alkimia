@@ -1,3 +1,6 @@
+include:
+  - https://invent.kde.org/sysadmin/ci-utilities/raw/master/gitlab-templates/linux.yml
+
 image: opensuse/leap
 
 build_kf5_tumbleweed:
