@@ -44,6 +44,10 @@
 #include <KHelpMenu>
 #include <QMenuBar>
 
+#if defined(Q_OS_WIN) && !defined(BUILD_WITH_KIO)
+#include <QNetworkProxyFactory>
+#endif
+
 int main(int argc, char **argv)
 {
     KAboutData about(QStringLiteral("onlinequoteseditor"),
@@ -59,6 +63,10 @@ int main(int argc, char **argv)
 #else
     KCmdLineArgs::init(argc, argv, &about);
     KApplication app(true);
+#endif
+
+#if defined(Q_OS_WIN) && !defined(BUILD_WITH_KIO)
+    QNetworkProxyFactory::setUseSystemConfiguration(true);
 #endif
 
     MainWindow w;
